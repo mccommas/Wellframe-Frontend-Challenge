@@ -1,0 +1,91 @@
+<nav class="navbar navbar-light bg-faded">
+  <h1 class="navbar-brand mb-0">Github Search</h1>
+</nav>
+
+<div class="card">
+  <div class="card-block">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Type a username or repo full name and hit 'Go':</label>
+      <input type="email" class="form-control" [(ngModel)]="username" name="txtrepo" id="txtrepo" placeholder="Username or Repo URL">
+    </div>
+    <button type="submit" (click)="exploreNow()" class="btn btn-primary">Go</button>
+  </div>
+</div>
+<br/>
+
+<div *ngIf="userDetail" class="container">
+  <h3>User Info</h3>
+  <hr>
+  <div class="row row-margin-bottom">
+    <div class="col-md-10 no-padding lib-item" data-category="view">
+      <div class="lib-panel">
+        <div class="row box-shadow">
+          <div class="col-md-6">
+            <img class="lib-img-show" src="{{userDetail.avatar_url}}">
+          </div>
+          <div class="col-md-6">
+            <div class="lib-row lib-header">
+              {{userDetail.name}}
+              <div class="lib-header-seperator"></div>
+            </div>
+            <div class="lib-row lib-desc">
+              <ul class="list-group">
+                <li class="list-group-item disabled"><b>Username:</b> {{userDetail.login}}</li>
+                <li class="list-group-item disabled"><b>Name:</b> {{userDetail.name}}</li>
+                <li class="list-group-item disabled"><b>Email:</b> {{userDetail.email}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+<div *ngIf="starredRepo" class="container">
+  <h3>Starred Repo</h3>
+  <hr>
+  <div class="row row-margin-bottom" *ngFor='let repo of starredRepo'>
+    <div class="col-md-5 no-padding lib-item" data-category="view">
+      <div class="lib-panel">
+        <div class="row box-shadow">
+          <div class="col-md-6">
+            <img class="lib-img-show" src="https://dafz.com/images/icons/github.svg">
+          </div>
+          <div class="col-md-6">
+            <div class="lib-row lib-header">
+              <a uiSref="repo" [uiParams]="{ username: repo.owner.login, repo: repo.name }">{{repo.name}}</a> by <a uiSref="user"
+                [uiParams]="{ username: repo.owner.login }">({{repo.owner.login}})</a>
+              <div class="lib-header-seperator"></div>
+            </div>
+            <div class="lib-row lib-desc">
+              <p>{{repo.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="repoDetails" class="container">
+  <h3>Starred Repo</h3>
+  <hr>
+  <div class="row row-margin-bottom" *ngFor='let repo of repoDetails'>
+    <div class="col-md-5 no-padding lib-item" data-category="view">
+      <div class="lib-panel">
+        <div class="row box-shadow">
+          <div class="col-md-6">
+            <img class="lib-img-show" src="{{repo.avatar_url}}">
+          </div>
+          <div class="col-md-6">
+            <div class="lib-row lib-header">
+              <a uiSref="user" [uiParams]="{ username: repo.login }">({{repo.login}})</a>
+              <div class="lib-header-seperator"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
