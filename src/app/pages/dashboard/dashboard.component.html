@@ -6,9 +6,8 @@
   <div class="card-block">
     <div class="form-group">
       <label for="exampleInputEmail1">Type a username or repo full name and hit 'Go':</label>
-      <input type="email" class="form-control" [(ngModel)]="username" name="txtrepo" id="txtrepo" placeholder="Username or Repo URL">
-    </div>
-    <button type="submit" (click)="exploreNow()" class="btn btn-primary">Go</button>
+      <input type="email" class="form-control" [(ngModel)]="username" name="txtrepo" id="txtrepo" placeholder="Username or Repo URL" (keyup)="getRequiredData()">
+    </div> 
   </div>
 </div>
 <br/>
@@ -21,7 +20,7 @@
       <div class="lib-panel">
         <div class="row box-shadow">
           <div class="col-md-6">
-            <img class="lib-img-show" src="{{userDetail.avatar_url}}">
+            <img class="img-thumbnail" src="{{userDetail.avatar_url}}">
           </div>
           <div class="col-md-6">
             <div class="lib-row lib-header">
@@ -50,7 +49,7 @@
       <div class="lib-panel">
         <div class="row box-shadow">
           <div class="col-md-6">
-            <img class="lib-img-show" src="https://dafz.com/images/icons/github.svg">
+            <img class="img-thumbnail" src="https://dafz.com/images/icons/github.svg">
           </div>
           <div class="col-md-6">
             <div class="lib-row lib-header">
@@ -76,12 +75,45 @@
       <div class="lib-panel">
         <div class="row box-shadow">
           <div class="col-md-6">
-            <img class="lib-img-show" src="{{repo.avatar_url}}">
+            <img class="img-thumbnail" src="{{repo.avatar_url}}">
           </div>
           <div class="col-md-6">
             <div class="lib-row lib-header">
               <a uiSref="user" [uiParams]="{ username: repo.login }">({{repo.login}})</a>
               <div class="lib-header-seperator"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="userRepoDetail" class="container">
+  <h3>User Repositories</h3>
+  <hr>
+  <div class="row row-margin-bottom" *ngFor='let userRepo of userRepoDetail'>
+    <div class="col-md-10 no-padding lib-item" data-category="view">
+      <div class="lib-panel">
+        <div class="row box-shadow">
+          <div class="col-md-3">
+             <img class="img-thumbnail" src="https://dafz.com/images/icons/github.svg">
+          </div>
+          <div class="col-md-6">
+            <div class="lib-row lib-header">
+              <a>({{userRepo.name}})</a>
+              <div class="lib-header-seperator"></div>
+            </div>
+            <div class="lib-row lib-desc">
+              <ul class="list-group">
+                <li class="list-group-item disabled"><b>Full Name:</b> {{userRepo.full_name}}</li>
+                <li class="list-group-item disabled"><b>Owner:</b> {{userRepo.owner.login}}</li>
+                <li class="list-group-item disabled"><b>URL:</b> {{userRepo.html_url}}</li>
+                <li class="list-group-item disabled"><b>Git Url:</b> {{userRepo.git_url}}</li>
+                <li class="list-group-item disabled"><b>Language:</b> {{userRepo.language}}</li>
+                <li class="list-group-item disabled"><b>Description:</b> {{userRepo.description}}</li>
+              </ul>
             </div>
           </div>
         </div>

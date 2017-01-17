@@ -10,10 +10,13 @@ export class DashboardService {
     getUserDetail = function (parameter) {
         return this.httpService.http_get(this.constantService.getUserDetail + parameter);
     };
+    getUserRepoDetail = function (parameter) {
+        return this.httpService.http_get(this.constantService.getUserDetail + parameter + this.constantService.userRepoEndParameter);
+    };
     getUserStarredDetail = function (parameter) {
         return this.httpService.http_get(this.constantService.getUserDetail + parameter + this.constantService.starredDetailEndParameter);
     };
-    getRepoDetails = function(parameter){
+    getRepoDetails = function (parameter) {
         return this.httpService.http_get(this.constantService.getRepoDetail + parameter + this.constantService.repoEndParameter);
     }
 }

@@ -11,6 +11,7 @@ import { UIRouter } from 'ui-router-ng2';
 export class DashboardComponent implements OnInit {
   username: string;
   userDetail: any;
+  userRepoDetail: any;
   repoDetails: any;
   starredRepo: any;
   routeParameters: any;
@@ -31,6 +32,15 @@ export class DashboardComponent implements OnInit {
         this.starredRepo = data;
       });
   }
+
+  getUserRepoDetail() {
+    this.dashboardService.getUserRepoDetail(this.username).map(r => r.json())
+      .subscribe(data => {
+        this.userRepoDetail = data;
+        console.log(data);
+      });
+  }
+
   getUserDetail() {
     if (this.username) {
       this.dashboardService.getUserDetail(this.username).map(r => r.json())
@@ -38,6 +48,7 @@ export class DashboardComponent implements OnInit {
           this.userDetail = data;
         });
       this.getUserStarredDetail();
+      this.getUserRepoDetail();
     }
   }
 
