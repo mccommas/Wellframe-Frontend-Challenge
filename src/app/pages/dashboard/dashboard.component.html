@@ -54,7 +54,7 @@
             <div class="lib-row lib-header">
               <a uiSref="repo" [uiParams]="{ username: repo.owner.login, repo: repo.name }">{{repo.name}}</a> by <a uiSref="user"
                                                                                                                     [uiParams]="{ username: repo.owner.login }">({{repo.owner.login}})</a>
-              <div class="lib-header-seperator"></div>
+
             </div>
             <div class="lib-row lib-desc">
               <p>{{repo.description}}</p>
@@ -79,8 +79,8 @@
           <div class="col-md-6">
             <div class="lib-row lib-header">
               <a uiSref="user" [uiParams]="{ username: repo.login }">({{repo.login}})</a>
-              <div class="lib-header-seperator"></div>
-            </div>
+
+            </div>s
           </div>
         </div>
       </div>
