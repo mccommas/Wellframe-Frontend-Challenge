@@ -16,4 +16,7 @@ export class DashboardService {
     getRepoDetails = function(parameter){
         return this.httpService.http_get(this.constantService.getRepoDetail + parameter + this.constantService.repoEndParameter);
     }
+  getUser = function(parameter){
+    return this.httpService.http_get(this.constantService.getRepoDetail + parameter + this.constantService.repoEndParameter);
+  }
 }
