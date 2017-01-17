@@ -4,9 +4,8 @@
 
 <div class="card">
   <div class="card-block">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Type a username or repo full name and hit 'Go':</label>
-      <input type="email" class="form-control" [(ngModel)]="username" name="txtrepo" id="txtrepo" placeholder="Username or Repo URL" (keyup)="getRequiredData()">
+    <div class="form-group"> 
+      <input type="text" id="exampleInputEmail1" class="form-control" placeholder="Enter Github Username..." [(ngModel)]="username" name="username" (keyup)="getRequiredData()">
     </div> 
   </div>
 </div>
@@ -54,7 +53,7 @@
           <div class="col-md-6">
             <div class="lib-row lib-header">
               <a uiSref="repo" [uiParams]="{ username: repo.owner.login, repo: repo.name }">{{repo.name}}</a> by <a uiSref="user"
-                [uiParams]="{ username: repo.owner.login }">({{repo.owner.login}})</a>
+                                                                                                                    [uiParams]="{ username: repo.owner.login }">({{repo.owner.login}})</a>
               <div class="lib-header-seperator"></div>
             </div>
             <div class="lib-row lib-desc">
@@ -88,6 +87,7 @@
     </div>
   </div>
 </div>
+<<<<<<< HEAD
 
 
 <div *ngIf="userRepoDetail" class="container">
@@ -121,3 +121,5 @@
     </div>
   </div>
 </div>
+=======
+>>>>>>> daa22835f1656a3c0a974fe328b9a23ab7331e38
