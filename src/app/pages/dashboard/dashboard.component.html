@@ -5,8 +5,9 @@
 <div class="card">
   <div class="card-block">
     <div class="form-group">
-      <input type="text" id="exampleInputEmail1" class="form-control" placeholder="Enter Github Username..." [(ngModel)]="username" name="username" (keyup)="getRequiredData()">
+      <input type="text" id="exampleInputEmail1" class="form-control" placeholder="Enter Github Username..." [(ngModel)]="username" name="username">
     </div>
+    <button type="submit" (click)="exploreNow()" class="btn btn-primary">Go</button>
   </div>
 </div>
 <br/>
